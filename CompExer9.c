@@ -1,106 +1,87 @@
-/*
-    Programa : CompExer9.c
-    Autor : Miguel Lima Tavares
-    Data : 23/08/2019
-    Descricao: Recebe duas datas e diz qual e a mais velha.
-*/
-
 #include <stdio.h>
-
 int main(void)
 {
-    int dia1, mes1, ano1, dia2, mes2, ano2;
+    int i, x, alunos;
+    float soma,nota,prova,teste,teste1,teste2,teste3;
+    
+    
+    
+    printf("Quantos alunos deseja calcular a media?\n");
+    scanf("%d",&alunos);
 
-    // Recebe a primeira data
-    printf("Digite o dia mes e ano da primeira pessoa:\t");
-    scanf("%d %d %d", &dia1, &mes1, &ano1);
-
-    // Recebe a segunda data
-    printf("Digite  o dia mes e ano da segunda pessoa:\t");
-    scanf("%d %d %d", &dia2, &mes2, &ano2);
-
-    // Validacao das datas
-
-    if ((ano1 < 0 || ano1 > 9999) || (ano2 < 0 || ano2 > 9999))
-    {                                                                   // Validacao do ano
-        printf("Dite um ano valido\n");
+    if (alunos <= 0)
+    {
+        printf("Digite um numero valido de alunos\n");
         return 0;
     }
-
-    // Validacao dos meses
-
-    if ((mes1 < 1 || mes1 > 12) || (mes2 < 1 || mes2 > 12))
+    
+    for (i = 0; i < alunos; ++i)
     {
-        printf("Digite um mes valido\n");
-        return 0;
-    }
 
-    // Validacao dos dias
-
-    if ((dia1 < 1 || dia1 > 31) || (dia2 < 1 || dia2 > 31))
-    {
-        printf("Digite um dia valido\n");
-        return 0;
-    }
-
-    // Validacao dos dias terminados em 31
-
-    if ((dia1 == 31 || dia2 == 31) && (mes1 == 2 || mes1 == 4 || mes1 == 6 || mes1 == 9 || mes1 ==11 || mes2 == 2 || mes2 == 4 || mes2 == 6 || mes2 == 9 || mes2 == 11))
-    {
-        printf("Esse mes nao possui 31 dias\n");
-        return 0;
-    }
-
-    // Validacao do mes de fevereiro e ano bissexto
-
-    if ((mes1 == 2 || mes2 == 2) && (dia1 > 28 || dia2 > 28)) 
-    {
-        if ((dia1 == 29 || dia2 == 29) && ((ano1 % 400 != 0) || (ano2 % 400 != 0) || (((ano1 % 4 != 0) || (ano2 % 4 != 0)) && (ano1 % 100 == 0 || ano2 % 100 == 0))))
+    printf("Digite as notas do aluno %d,\n\n",i + 1);
+    soma = 0; // Zera as notas ao final do loop para receber as notas do proximo aluno 
+      
+        //Loop para receber as 3 notas do teste e da prova 
+        for ( x = 0; x < 3; ++x)
         {
-            printf("Verifique a data, este nao e um ano bissexto\n");
-            return 0;
-        }
-        printf("Mes de fevereiro com mais de 28 dias\n");
-        return 0;
-        
-    }
-
-
-    // Indica quem e mais velho
-
-    if (ano1 < ano2)
-    {
-        printf("primeiro\n");
-    }
-    else if (ano2 < ano1)
-    {
-        printf("segundo\n");
-    }
-    else if (ano2 == ano1)
-    {
-        if (mes1 < mes2)
-        {
-            printf("primeiro\n");
-        }
-        else if (mes1 == mes2)
-        {
-            if (dia1 < dia2)
+            if (x == 0)
             {
-                printf("primeiro\n");
+                printf("Digite a nota da prova do aluno %d\n",i+1);
+                scanf("%f",&prova);
+                if (prova < 0 || prova > 10)
+                {
+                    printf("Digite uma nota valida\n");
+                    return 0;
+                }
+                
             }
-            else if (dia1 == dia2)
+            
+            printf("Digite a nota do teste %d do aluno %d \n",x+1,i+1);
+            scanf("%f",&teste);
+            if (teste < 0 || teste > 10)
+                {
+                    printf("Digite uma nota valida\n");
+                    return 0;
+                }
+            if (x == 0)
             {
-                printf("mesmo dia\n");
+                teste1 = teste;
             }
-            else
+            if (x == 1)
             {
-                printf("segundo\n");
-            }    
+                teste2 = teste;
+            }
+            if (x == 2)
+            {
+                teste3 = teste;
+            }
+            
+            
+            
+            
+            
+            
+            soma += teste;
         }
-        else
-        {
-            printf("segundo\n");
-        }    
-    }
+    
+        printf("As notas do aluno %d sao:\n",i+1);
+        printf("Prova: \t%0.1f\n",prova);
+        printf("Teste 1 \t%0.1f",teste1);
+        printf("Teste 2 \t%0.1f",teste2);
+        printf("Teste 3 \t%0.1f",teste3);
+        printf("Nota final\t%0.1f\n",0.8 * prova + 0.2 *(soma/3));
+    
         
+    
+    
+    }
+   
+     
+    
+    
+    
+    
+
+    
+    
 }
