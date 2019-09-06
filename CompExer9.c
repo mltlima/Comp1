@@ -1,3 +1,9 @@
+/*
+    Programa : lista2Ex5.c
+    Autor : Miguel Lima Tavares
+    Data : 06/09/2019
+    Descricao: Calcula a media dos alunos.
+*/
 #include <stdio.h>
 int main(void)
 {
@@ -9,10 +15,10 @@ int main(void)
     printf("Quantos alunos deseja calcular a media?\n");
     scanf("%d",&alunos);
 
-    if (alunos <= 0)
+    while(alunos <= 0)
     {
         printf("Digite um numero valido de alunos\n");
-        return 0;
+        scanf("%d",&alunos);
     }
     
     for (i = 0; i < alunos; ++i)
@@ -28,20 +34,20 @@ int main(void)
             {
                 printf("Digite a nota da prova do aluno %d\n",i+1);
                 scanf("%f",&prova);
-                if (prova < 0 || prova > 10)
+                while (prova < 0 || prova > 10)
                 {
                     printf("Digite uma nota valida\n");
-                    return 0;
+                     scanf("%f",&prova);
                 }
                 
             }
             
             printf("Digite a nota do teste %d do aluno %d \n",x+1,i+1);
             scanf("%f",&teste);
-            if (teste < 0 || teste > 10)
+            while (teste < 0 || teste > 10)
                 {
                     printf("Digite uma nota valida\n");
-                    return 0;
+                    scanf("%f",&teste);
                 }
             if (x == 0)
             {
@@ -54,34 +60,17 @@ int main(void)
             if (x == 2)
             {
                 teste3 = teste;
-            }
-            
-            
-            
-            
-            
+            }   
             
             soma += teste;
         }
     
         printf("As notas do aluno %d sao:\n",i+1);
-        printf("Prova: \t%0.1f\n",prova);
-        printf("Teste 1 \t%0.1f",teste1);
-        printf("Teste 2 \t%0.1f",teste2);
-        printf("Teste 3 \t%0.1f",teste3);
-        printf("Nota final\t%0.1f\n",0.8 * prova + 0.2 *(soma/3));
-    
-        
-    
-    
-    }
-   
-     
-    
-    
-    
-    
-
-    
+        printf("Prova: \t\t%0.1f\n",prova);
+        printf("Teste 1 \t%0.1f\n",teste1);
+        printf("Teste 2 \t%0.1f\n",teste2);
+        printf("Teste 3 \t%0.1f\n",teste3);
+        printf("Nota final\t%0.1f\n\n",0.8 * prova + 0.2 *(soma/3));
+    }   
     
 }
