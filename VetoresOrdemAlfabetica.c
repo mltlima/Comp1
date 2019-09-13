@@ -1,6 +1,6 @@
 /*
     Organiza os vetores em ordem alfabetica, conta a 
-    quantidade de vogais e letras as
+    quantidade de vogais e letras 'a'
 */
 
 #include <stdio.h>
@@ -38,7 +38,7 @@ int main(void)
     
 
     
-    // Vogais e letras a na Primeira cadeia
+    // Vogais e letras 'a' na Primeira cadeia
 
    
     for(i=0; cadeia1[i]!='\0'; ++i)
@@ -55,10 +55,13 @@ int main(void)
         
         
     }
+    printf("Vogais na primeira cadeia: %d \n",vogais);
+    printf("Letras a na primeira cadeia: %d \n",letraA);
 
-    // Vogais e letras s na segunda cadeia
+    // Vogais e letras 'a' na segunda cadeia
 
-    
+    vogais = 0;
+    letraA = 0;
     for(i=0; cadeia2[i]!='\0'; ++i)
     {
         if(cadeia2[i]=='a' || cadeia2[i]=='e' || cadeia2[i]=='i' ||
@@ -71,8 +74,8 @@ int main(void)
             ++letraA;
         }
     }
-    printf("Vogais nas cadeias: %d \n",vogais);
-    printf("Letras a nas cadeias: %d \n",letraA);
+    printf("Vogais na segunda cadeia: %d \n",vogais);
+    printf("Letras a na segunda cadeia: %d \n",letraA);
     
     return 0;
 }
