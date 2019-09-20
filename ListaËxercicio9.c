@@ -67,6 +67,33 @@ int main(void)
     // Compara os vetores
 
     int C[N + M + 1][1];
+    int n = 0;
+
+    for (int i = 0; i < N; i++)
+    {   
+        if (vetorA[n][1] < vetorB[i][1])
+    {
+            C[i][1] = vetorA[i][1];
+            n ++;
+    }
+        else 
+        {
+            C[i][1] = vetorB[i][1];
+        }  
+    }
+    
+    for (int j = 0; j < N + M; j++)
+    {
+        printf("%d\n",C[j][1]);
+        
+    }
+    
+
+
+    /* 
+
+
+    int C[N + M + 1][1];
     for (int i = 0; i < N || M; i++)
     {
        if (vetorA[i][1] < vetorB[i][1])
@@ -86,5 +113,5 @@ int main(void)
         
     }
     
-    
+   */ 
 }
