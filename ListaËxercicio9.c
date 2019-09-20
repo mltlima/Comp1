@@ -50,7 +50,7 @@ int main(void)
     // Recebe os valores do vetor B
 
     printf("Digite os digitos do vetor B\n");    
-    for (int i = 0; i < N; i++) 
+    for (int i = 0; i < M; i++) 
     {
         
         scanf("%d",&vetorB[i][1]);                      
@@ -66,52 +66,46 @@ int main(void)
 
     // Compara os vetores
 
-    int C[N + M + 1][1];
-    int n = 0;
+    int C[N + M + 2][1];
+    int x = 0,j = 0, i = 0;
 
-    for (int i = 0; i < N; i++)
-    {   
-        if (vetorA[n][1] < vetorB[i][1])
+    while (x < N + M)
     {
-            C[i][1] = vetorA[i][1];
-            n ++;
-    }
-        else 
+        if (i == N)
         {
-            C[i][1] = vetorB[i][1];
-        }  
-    }
-    
-    for (int j = 0; j < N + M; j++)
-    {
-        printf("%d\n",C[j][1]);
-        
-    }
-    
-
-
-    /* 
-
-
-    int C[N + M + 1][1];
-    for (int i = 0; i < N || M; i++)
-    {
-       if (vetorA[i][1] < vetorB[i][1])
-    {
-        C[i][1] = vetorA[i][1];
-    }
-        else
-        {
-            C[i][1] = vetorB[i][1];
+            C[x][1] = vetorB[j][1];
+            j ++;
         }
-            
+        else if (j == M )
+        {
+            C[x][1] = vetorA[i][1];
+            i ++;
+        }
+
+        else if (vetorA[i][1] < vetorB[j][1]) 
+        {
+            C[x][1] = vetorA[i][1];
+            i ++;
+        }
+        else if (vetorA[i][1] == vetorB[j][1])
+        {
+            C[x][1] = vetorA[i][1];
+            C[x + 1][1] = vetorB[j][1];
+            i ++;
+            j ++;
+            x ++;
+        }   
+        else if (vetorA[i][1] > vetorB[j][1])
+        {
+            C[x][1] = vetorB[j][1];
+            j ++;
+        }
+        x ++;
     }
     
     for (int j = 0; j < N + M; j++)
-    {
+        {
         printf("%d\n",C[j][1]);
-        
-    }
-    
-   */ 
+        }
+    return 0;
 }
