@@ -43,14 +43,7 @@ int main()
     meio = len/2;
 
     // Checa se e um palindromo
-    while (h > 1)
-    {
-        if(str[l++] != str[meio--])
-        {
-            n = 1;
-            break;
-        }
-    }
+    
     //printf("%d\n",n);
     if (n == 1)
         printf("%d\n", insercoesMin(str, 0, strlen(str)-1)); 
