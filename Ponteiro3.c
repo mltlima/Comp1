@@ -2,29 +2,21 @@
 
 int divs(int valor, int *maximo, int *minimo)
 {   
-    int i = 2;
-    while (i < 12)
-    {
+    for (int i = 2; i < valor; i++)
+    {  
         if (valor % i == 0){
             if (*maximo == 0){
                 *minimo = i;
             }
-            *maximo = i;
+            *maximo = i;   
         }   
-        i ++;  
     }
-    
-    
-/*
-   if (*maximo != 0)
-       return 1;
-   else
-       return 0;
-   
-  */ 
+    if (*maximo != 0)
+        return 1;
+    else
+        return 0;
    
 }
-
 
 int main(void)
 {
@@ -33,10 +25,11 @@ int main(void)
    printf("Digite um numero\n");
    scanf("%d",&n);
 
+    divs(n,&max, &min);
    resultado = divs(n,&max, &min);
-   //if (resultado == 1)
+   if (resultado == 1)
    {
-       printf("O minimo divisor e: %d e o maior e: %d",min,max);
+       printf("O minimo divisor e: %d e o maior e: %d\n",min,max);
    }
    
    printf("%d\n",resultado);
