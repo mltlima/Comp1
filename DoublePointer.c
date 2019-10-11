@@ -14,12 +14,22 @@ int funcao(char **p)
    char **p2;
    printf("%p\n",p);
    p2 = (char **)malloc(10 * sizeof(char *));
+   if (p2 == NULL)
+   {
+       printf("Falta memoria\n");
+       return 1;
+   }
    p = p2;
    printf("%p\n",p);
    for (int  i = 0; i < 10; i++)
    {
-       *(p + i) = (char *)malloc(30 * sizeof(char));
-       printf("%p\n",*(p + i)); 
+      *(p + i) = (char *)malloc(30 * sizeof(char));
+      if (*(p + i) == NULL)
+       {
+           printf("Falta memoria\n");
+           return 1;
+       }
+      printf("%p\n",*(p + i)); 
    }
    
 }
