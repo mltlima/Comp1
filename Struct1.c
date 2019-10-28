@@ -33,7 +33,7 @@ void dados()
 {
    char temp;
 
-   for (int i = 0; i < 2; i++){
+   for (int i = 0; i < 5; i++){
       printf("Digite o nome do usuario %d: ",i + 1);
       gets(cadastro[i].nome);
       while (strlen(cadastro[i].nome) > 200){
@@ -158,7 +158,7 @@ void dados()
 void maiorIdade(void)
 {
    int j = 0;
-   for (int i = 0; i < 2; i++)
+   for (int i = 0; i < 5; i++)
    {
       if (cadastro[i].idade > cadastro[j].idade)
       {
@@ -171,7 +171,7 @@ void maiorIdade(void)
 // Pessoas do sexo masculino
 void homens(void)
 {  
-   for (int i = 0; i < 2; i++){
+   for (int i = 0; i < 5; i++){
       if (cadastro[i].sexo == 0)
          printf("O usuario %s e do sexo masculino\n",cadastro[i].nome);     
    }   
@@ -180,7 +180,7 @@ void homens(void)
 // salario maior que 1000
 void salario(void)
 {
-   for (int i = 0; i < 2; i++)
+   for (int i = 0; i < 5; i++)
     {
         if(cadastro[i].salario > 1000){
             printf("%s tem um salario maior que R$1.000.00\n", cadastro[i].nome);
@@ -202,7 +202,7 @@ void identidade(void)
       gets(id);
    }
 
-   for (int i = 0; i < 2; i++)
+   for (int i = 0; i < 5; i++)
    {
       if (strcmp(id,cadastro[i].identidade) == 0){
             printf("\nNOME: %s\n", cadastro[i].nome);
