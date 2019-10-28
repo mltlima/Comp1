@@ -144,11 +144,13 @@ void dados()
       printf("Salario: ");
       scanf("%f", &cadastro[i].salario);
       do {} while(getchar()!='\n');
+      fflush(stdin);
 
 
       printf("Idade: ");
       scanf("%d", &cadastro[i].idade);
-      do {} while(getchar()!='\n');   
+      do {} while(getchar()!='\n');
+      fflush(stdin);
       
    }
    
