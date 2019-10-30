@@ -166,6 +166,7 @@ void dados()
 
 }
 
+// Busca por primeiro nome
 void nome(void)
 {
     char first[51];
@@ -202,11 +203,93 @@ void nome(void)
         printf("Nome nao foi encontrada\n");
 }
 
+// Busca por mes de aniversario
+
+int aniversario(void)
+{   
+    int month;
+    int check = 0;
+
+    printf("Digite o mes de aniversario do usuario que deseja fazer a busca\n");
+    gets(month);
+        while (month < 1 || month > 12){
+            printf("Mes invalido, digite novamente: ");
+            gets(month);
+    }
+
+    for (int i = 0; i < 100; i++)
+    {
+        if ((agenda[i].aniversario.mes) == month){
+            printf("\nNOME: %s %s\n", agenda[i].nome.primeiroNome,agenda[i].nome.sobrenome);
+            printf("ANIVERSARIO: %i/%i/%i\n", agenda[i].aniversario.dia,agenda[i].aniversario.mes,agenda[i].aniversario.ano);
+            printf("EMAIL: %s\n", agenda[i].email);
+            printf("TELEFONE: %s %s\n", agenda[i].telefone.ddd,agenda[i].telefone.numero);
+            printf("RUA: %s, %i\n", agenda[i].endereco.rua,agenda[i].endereco.numero);
+            printf("COMPLEMENTO: %s\n",agenda[i].endereco.complemento);
+            printf("CEP: %s\n", agenda[i].endereco.CEP);
+            printf("BAIRRO: %s\n", agenda[i].endereco.bairro);
+            printf("CIDADE: %s\n", agenda[i].endereco.cidade);
+            printf("ESTADO: %s\n", agenda[i].endereco.estado);
+            printf("PAIS: %s\n", agenda[i].endereco.pais);
+            printf("OBS: %s\n", agenda[i].observacao);
+            check ++;
+            
+        }
+    }
+    if (check == 0)
+        printf("Nenhum usuario faz aniversario nesse mes\n");
+}
+
+// Busca por mes e dia de aniversario
+void diaMes(void)
+{
+    int month, day;
+    int check = 0;
+
+    printf("Digite o mes de aniversario do usuario que deseja fazer a busca\n");
+    gets(month);
+        while (month < 1 || month > 12){
+            printf("Mes invalido, digite novamente: ");
+            gets(month);
+    }
+
+    printf("Digite o dia de aniversario do usuario que deseja fazer a busca\n");
+    gets(day);
+        while (day < 1 || day > 31){
+            printf("Mes invalido, digite novamente: ");
+            gets(day);
+    }
+
+    for (int i = 0; i < 100; i++)
+    {
+        if ((agenda[i].aniversario.mes) == month && (agenda[i].aniversario.dia) == day){
+            printf("\nNOME: %s %s\n", agenda[i].nome.primeiroNome,agenda[i].nome.sobrenome);
+            printf("ANIVERSARIO: %i/%i/%i\n", agenda[i].aniversario.dia,agenda[i].aniversario.mes,agenda[i].aniversario.ano);
+            printf("EMAIL: %s\n", agenda[i].email);
+            printf("TELEFONE: %s %s\n", agenda[i].telefone.ddd,agenda[i].telefone.numero);
+            printf("RUA: %s, %i\n", agenda[i].endereco.rua,agenda[i].endereco.numero);
+            printf("COMPLEMENTO: %s\n",agenda[i].endereco.complemento);
+            printf("CEP: %s\n", agenda[i].endereco.CEP);
+            printf("BAIRRO: %s\n", agenda[i].endereco.bairro);
+            printf("CIDADE: %s\n", agenda[i].endereco.cidade);
+            printf("ESTADO: %s\n", agenda[i].endereco.estado);
+            printf("PAIS: %s\n", agenda[i].endereco.pais);
+            printf("OBS: %s\n", agenda[i].observacao);
+            check ++;
+            
+        }
+    }
+    if (check == 0)
+        printf("Nenhum usuario faz aniversario nesse mes e dia\n");
+}
 
 int main(void)
 {
     dados();
     nome();
+    aniversario();
+    diaMes();
+    
 
     return 0;
 }
