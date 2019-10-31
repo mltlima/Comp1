@@ -44,6 +44,7 @@ struct Agenda
 };
 
  struct Agenda agenda[101];
+ struct Agenda temp[101];
 
 // Recebe os dados dos 100 usuarios
 void dados()
@@ -283,12 +284,41 @@ void diaMes(void)
         printf("Nenhum usuario faz aniversario nesse mes e dia\n");
 }
 
+// Organiza em ordem alfabetica
+void alfabetica(void)
+{
+    for(int i = 0; i <=  50; ++i){
+        if( strcmp(agenda[i].nome.primeiroNome, agenda[i+1].nome.primeiroNome ) > 0 )
+        {
+            temp[i] = agenda[i];
+            agenda[i]= agenda[i+1];
+            agenda[i+1] = temp[i];
+        }
+
+        // Caso o primeiro nome seja igual
+        if (strcmp(agenda[i].nome.primeiroNome, agenda[i+1].nome.primeiroNome ) == 0)
+            if (strcmp(agenda[i].nome.sobrenome, agenda[i+1].nome.sobrenome ) > 0)
+            {
+                temp[i] = agenda[i];
+                agenda[i]= agenda[i+1];
+                agenda[i+1] = temp[i];
+            }
+    }
+}
+
+// Insere um novo usuario
+void add(void)
+{
+    
+}
+
 int main(void)
 {
     dados();
     nome();
     aniversario();
     diaMes();
+    alfabetica();
     
 
     return 0;
