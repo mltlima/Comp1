@@ -52,7 +52,7 @@ struct Agenda
 // Adiciona usuario
 void dados()
 {   
-    int usuarios = 1;  // Mudar se adicionar usuarios abaixo
+    int usuarios = 2;  // Mudar se adicionar usuarios abaixo
     char lixo;
     //for (int i = 0; i < 3; i++)
 
