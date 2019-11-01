@@ -33,7 +33,7 @@ void dados()
 {
    char temp;
 
-   for (int i = 0; i < 5; i++){
+   for (int i = 0; i < 2; i++){
       printf("Digite o nome do usuario %d: ",i + 1);
       gets(cadastro[i].nome);
       while (strlen(cadastro[i].nome) > 200){
@@ -194,6 +194,7 @@ void salario(void)
 void identidade(void)
 {
    char id[10];
+   int check = 0;
    //char sexo[] = {'masculino','feminino'};
    //char esCiv[] = {'solteiro(a)','casado(a)','divorciado(a)','viuvo(a)'}; 
    printf("Digite a identidade do usuario que deseja fazer a busca\n");
@@ -204,9 +205,10 @@ void identidade(void)
       gets(id);
    }
 
-   for (int i = 0; i < 5; i++)
-   {
+   for (int i = 0; i < 5; i++){
+   
       if (strcmp(id,cadastro[i].identidade) == 0){
+          check ++;
             printf("\nNOME: %s\n", cadastro[i].nome);
             printf("RG: %s\n", cadastro[i].identidade);
             printf("CPF: %s\n", cadastro[i].CPF);
@@ -216,7 +218,7 @@ void identidade(void)
             printf("BAIRRO: %s\n", cadastro[i].adress.bairro);
             printf("CIDADE: %s\n", cadastro[i].adress.cidade);
             printf("ESTADO: %s\n", cadastro[i].adress.estado);
-            printf("SALARIO: %d\n", cadastro[i].salario);
+            printf("SALARIO: %f\n", cadastro[i].salario);
             // Sexo
             int temp = cadastro[i].sexo;
             switch (temp)
@@ -249,9 +251,13 @@ void identidade(void)
 
             printf("IDADE: %d\n", cadastro[i].idade);
             break;
-         }
-      printf("Identidade nao foi encontrada\n");
-   }
+      }   
+    }
+    if (check == 0)
+    {
+        printf("Identidade nao foi encontrada\n");
+    }
+    
    
 }
 int main(void)
@@ -263,4 +269,3 @@ int main(void)
    identidade();
    return 0;
 }
-
