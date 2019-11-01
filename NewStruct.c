@@ -48,11 +48,12 @@ struct Agenda
  struct Agenda vazia[101];
 
 
+int usuarios = 2;  // Mudar se adicionar usuarios abaixo
 
 // Adiciona usuario
 void dados()
 {   
-    int usuarios = 2;  // Mudar se adicionar usuarios abaixo
+
     char lixo;
     //for (int i = 0; i < 3; i++)
 
@@ -80,6 +81,7 @@ void dados()
         while (agenda[usuarios].aniversario.dia < 1 || agenda[usuarios].aniversario.dia > 31){
             printf("Dia invalido, digite novamente: ");
             scanf("%d",&agenda[usuarios].aniversario.dia);
+            
         }
         
         printf("Digite o mes de aniversario do usuario: ");
@@ -174,7 +176,7 @@ void dados()
 
         usuarios ++;
 
-
+    printf("\n\n\n");
     // Organiza em ordem alfabetica apos adicionar usuario
     //alfabetica();
     
@@ -197,7 +199,9 @@ void nome(void)
         gets(first);
     }
 
-    for (int i = 0; i < 100; i++)
+    //printf("%d",usuarios);
+
+    for (int i = 0; i < usuarios; i++)
     {
         if (strcmp(first,agenda[i].nome.primeiroNome) == 0){
             printf("\nNOME: %s %s\n", agenda[i].nome.primeiroNome,agenda[i].nome.sobrenome);
@@ -216,6 +220,7 @@ void nome(void)
             
         }
     }
+    printf("\n\n\n");
     if (check == 0)
         printf("Nome nao foi encontrada\n");
 }
@@ -230,13 +235,13 @@ int aniversario(void)
 
     scanf("%c",&lixo);
     printf("Digite o mes de aniversario do usuario que deseja fazer a busca\n");
-    gets(month);
+    scanf("%d",&month);
         while (month < 1 || month > 12){
             printf("Mes invalido, digite novamente: ");
-            gets(month);
+            scanf("%d",&month);
     }
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < usuarios; i++)
     {
         if ((agenda[i].aniversario.mes) == month){
             printf("\nNOME: %s %s\n", agenda[i].nome.primeiroNome,agenda[i].nome.sobrenome);
@@ -255,6 +260,8 @@ int aniversario(void)
             
         }
     }
+    printf("\n\n\n");
+    scanf("%c",&lixo);
     if (check == 0)
         printf("Nenhum usuario faz aniversario nesse mes\n");
 }
@@ -268,17 +275,17 @@ void diaMes(void)
 
     scanf("%c",&lixo);
     printf("Digite o mes de aniversario do usuario que deseja fazer a busca\n");
-    gets(month);
+    scanf("%d",&month);
         while (month < 1 || month > 12){
             printf("Mes invalido, digite novamente: ");
-            gets(month);
+            scanf("%d",&month);
     }
 
     printf("Digite o dia de aniversario do usuario que deseja fazer a busca\n");
-    gets(day);
+    scanf("%d",&day);
         while (day < 1 || day > 31){
             printf("Mes invalido, digite novamente: ");
-            gets(day);
+            scanf("%d",&day);
     }
 
     for (int i = 0; i < 100; i++)
@@ -300,6 +307,8 @@ void diaMes(void)
             
         }
     }
+    printf("\n\n\n");
+    scanf("%c",&lixo);
     if (check == 0)
         printf("Nenhum usuario faz aniversario nesse mes e dia\n");
 }
@@ -309,7 +318,7 @@ void alfabetica(void)
 {
     char lixo;
     scanf("%c",&lixo);
-    for(int i = 0; i <=  100; ++i){
+    for(int i = 0; i < usuarios-1; ++i){
         if( strcmp(agenda[i].nome.primeiroNome, agenda[i+1].nome.primeiroNome ) > 0 )
         {
             temp[i] = agenda[i];
@@ -326,6 +335,7 @@ void alfabetica(void)
                 agenda[i+1] = temp[i];
             }
     }
+    printf("\n\n\n");
 }
 
 // Remove usuario
@@ -360,9 +370,10 @@ void remover(void)
                 agenda[i]= agenda[i+1];
                 agenda[i+1] = temp[i];
             }
-            
+            usuarios --;
         }
     }
+    printf("\n\n\n");
     //alfabetica();
 }
 
@@ -371,7 +382,7 @@ void printAll(void)
     char lixo;
     scanf("%c",&lixo);
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < usuarios; i++)
     {
         
             printf("\nNOME: %s %s\n", agenda[i].nome.primeiroNome,agenda[i].nome.sobrenome);
@@ -389,6 +400,8 @@ void printAll(void)
             
             
     }
+    printf("\n\n\n");
+    
 }
 
 void printNomeEmailTelefone(void)
@@ -396,12 +409,13 @@ void printNomeEmailTelefone(void)
     char lixo;
     scanf("%c",&lixo);
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < usuarios; i++)
     {
         printf("\nNOME: %s %s\n", agenda[i].nome.primeiroNome,agenda[i].nome.sobrenome);
         printf("TELEFONE: %s %s\n", agenda[i].telefone.ddd,agenda[i].telefone.numero);
         printf("EMAIL: %s\n", agenda[i].email);
     }
+    printf("\n\n\n");
     
 }
 int main(void)
@@ -427,23 +441,23 @@ int main(void)
     agenda[0].aniversario.mes = 12;
 
     //usuario 2
-    strcpy(agenda[0].nome.primeiroNome,"Mario");
-    strcpy(agenda[0].nome.sobrenome,"Encanador");
-    strcpy(agenda[0].email,"itsme@mario.com");
-    strcpy(agenda[0].endereco.bairro,"Nintendo");
-    strcpy(agenda[0].endereco.CEP,"22222222");
-    strcpy(agenda[0].endereco.cidade,"Roma");
-    strcpy(agenda[0].endereco.complemento,"Apt 101");
-    strcpy(agenda[0].endereco.estado,"NT");                              // Mudar numero de usuarios em dados
-    agenda[0].endereco.numero = 50;
-    strcpy(agenda[0].endereco.pais, "Italia");
-    strcpy(agenda[0].endereco.rua,"none");
-    strcpy(agenda[0].observacao,"TESTANDO numero 2");
-    strcpy(agenda[0].telefone.ddd,"11");
-    strcpy(agenda[0].telefone.numero,"2222222222");
-    agenda[0].aniversario.ano = 1900;
-    agenda[0].aniversario.dia = 1;
-    agenda[0].aniversario.mes = 12;
+    strcpy(agenda[1].nome.primeiroNome,"Mario");
+    strcpy(agenda[1].nome.sobrenome,"Encanador");
+    strcpy(agenda[1].email,"itsme@mario.com");
+    strcpy(agenda[1].endereco.bairro,"Nintendo");
+    strcpy(agenda[1].endereco.CEP,"22222222");
+    strcpy(agenda[1].endereco.cidade,"Roma");
+    strcpy(agenda[1].endereco.complemento,"Apt 101");
+    strcpy(agenda[1].endereco.estado,"NT");                              // Mudar numero de usuarios em dados
+    agenda[1].endereco.numero = 50;
+    strcpy(agenda[1].endereco.pais, "Italia");
+    strcpy(agenda[1].endereco.rua,"none");
+    strcpy(agenda[1].observacao,"TESTANDO numero 2");
+    strcpy(agenda[1].telefone.ddd,"11");
+    strcpy(agenda[1].telefone.numero,"2222222222");
+    agenda[1].aniversario.ano = 1900;
+    agenda[1].aniversario.dia = 1;
+    agenda[1].aniversario.mes = 12;
     
     char menu_opt;
 
@@ -456,7 +470,7 @@ int main(void)
     printf("a. Adicionar usuario.\n");
     printf("b. Remover usuario\n");
     printf("c. Pesquisar usuario por nome.\n");
-    printf("d. Pesquisar usuario por dia de aniversario.\n");
+    printf("d. Pesquisar usuario por mes de aniversario.\n");
     printf("e. Pesquisar usuario por dia e mes de aniversario.\n");
     printf("f. Orgarnizar em ordem alfabetica.\n");
     printf("g. Imprimir todos os dados.\n");
@@ -489,8 +503,10 @@ int main(void)
         break;
     case 'g':
         printAll();
+        break;
     case 'h':
         printNomeEmailTelefone();
+        break;
     case 's':
         return 0;
     default:
