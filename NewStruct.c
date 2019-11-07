@@ -50,6 +50,7 @@ struct Agenda
 
 int usuarios = 2;  // Mudar se adicionar usuarios abaixo
 
+
 // Adiciona usuario
 void dados()
 {   
@@ -61,42 +62,62 @@ void dados()
         scanf("%c",&lixo);
         printf("Digite o nome do usuario: ");
         gets(agenda[usuarios].nome.primeiroNome);
-        //scanf(" %s",agenda[usuarios].nome.primeiroNome);
-        while (strlen(agenda[usuarios].nome.primeiroNome) > 50){
+        while (strlen(agenda[usuarios].nome.primeiroNome) > 50 || strlen(agenda[usuarios].nome.primeiroNome) < 1){
             printf("Nome invalido, digite novamente: ");
             gets(agenda[usuarios].nome.primeiroNome);
         }
     
 
         printf("Digite o sobrenome do usuario:\n");
-        //scanf(" %s",&agenda[usuarios].nome.sobrenome);
         gets(agenda[usuarios].nome.sobrenome);
-        while (strlen(agenda[usuarios].nome.sobrenome) > 150){
-            printf("Nome invalido, digite novamente: ");
+
+        while (strlen(agenda[usuarios].nome.sobrenome) > 150 || strlen(agenda[usuarios].nome.sobrenome) < 1){
+            printf("Sobrenome invalido, digite novamente: ");
             gets(agenda[usuarios].nome.sobrenome);
         }
         
-        printf("Digite o dia de aniversario do usuario: ");
-        scanf("%d",&agenda[usuarios].aniversario.dia);
-        while (agenda[usuarios].aniversario.dia < 1 || agenda[usuarios].aniversario.dia > 31){
-            printf("Dia invalido, digite novamente: ");
-            scanf("%d",&agenda[usuarios].aniversario.dia);
-            
-        }
-        
-        printf("Digite o mes de aniversario do usuario: ");
-        scanf("%d",&agenda[usuarios].aniversario.mes);
-        while (agenda[usuarios].aniversario.mes < 1 || agenda[usuarios].aniversario.mes > 12){
-            printf("Mes invalido, digite novamente: ");
-            scanf("%d",&agenda[usuarios].aniversario.mes);
-        }
-        
+
         printf("Digite o ano de aniversario do usuario: ");
         scanf("%d",&agenda[usuarios].aniversario.ano);
         while (agenda[usuarios].aniversario.ano < 1 || agenda[usuarios].aniversario.ano > 9999){
             printf("Ano invalido, digite novamente: ");
             scanf("%d",&agenda[usuarios].aniversario.ano);
         }
+
+
+        printf("Digite o mes de aniversario do usuario: ");
+        scanf("%d",&agenda[usuarios].aniversario.mes);
+        while (agenda[usuarios].aniversario.mes < 1 || agenda[usuarios].aniversario.mes > 12){
+            printf("Mes invalido, digite novamente: ");
+            scanf("%d",&agenda[usuarios].aniversario.mes);
+        }
+
+
+        printf("Digite o dia de aniversario do usuario: ");
+        scanf("%d",&agenda[usuarios].aniversario.dia);
+        while (agenda[usuarios].aniversario.dia < 1 || agenda[usuarios].aniversario.dia > 31){
+            printf("Dia invalido, digite novamente: ");
+            scanf("%d",&agenda[usuarios].aniversario.dia);   
+        }
+        while ((agenda[usuarios].aniversario.dia == 31) && (agenda[usuarios].aniversario.mes == 2 || agenda[usuarios].aniversario.mes == 4 || agenda[usuarios].aniversario.mes == 6 || agenda[usuarios].aniversario.mes == 9 || agenda[usuarios].aniversario.mes ==11 ))
+        {
+            printf("Esse mes nao possui 31 dias, digite um dia valido: ");
+            scanf("%d",&agenda[usuarios].aniversario.dia);
+        }
+        
+        while ((agenda[usuarios].aniversario.mes == 2) && (agenda[usuarios].aniversario.dia > 29)){
+            printf("Fevereiro com mais de 29 dias, digite um dia valido: ");
+            scanf("%d",&agenda[usuarios].aniversario.dia);  
+        }
+        
+        if((agenda[usuarios].aniversario.dia == 29) && ((agenda[usuarios].aniversario.ano % 400 != 0) || ((agenda[usuarios].aniversario.ano % 4 != 0) && (agenda[usuarios].aniversario.ano % 100 == 0))))
+        {
+            printf("Esse nao e um ano bissexto, digite um dia valido: ");
+            while (agenda[usuarios].aniversario.dia > 28){
+                    scanf("%d",&agenda[usuarios].aniversario.dia);
+            }
+        }
+
 
         printf("Digite o email do usuario:\n");
         scanf("%200s",agenda[usuarios].email);
@@ -105,25 +126,28 @@ void dados()
         scanf("%c",&lixo);
         printf("Rua: ");                                            
         gets(agenda[usuarios].endereco.rua);
-        while (strlen(agenda[usuarios].endereco.rua) > 100){
+        while (strlen(agenda[usuarios].endereco.rua) > 100 || strlen(agenda[usuarios].endereco.rua) < 1){
             printf("Rua invalida, digite novamente: ");
             gets(agenda[usuarios].endereco.rua);
         }
 
         printf("Numero: ");                                            
         scanf("%d",&agenda[usuarios].endereco.numero);
-        do {} while(getchar()!='\n');
-
+        while (agenda[usuarios].endereco.numero < 1 || agenda[usuarios].endereco.numero > 9999){
+            printf("Numero invalido, digite novamente: ");
+            scanf("%d",&agenda[usuarios].endereco.numero);
+        }
+        scanf("%c",&lixo);
         printf("Complemento: ");                                            
         gets(agenda[usuarios].endereco.complemento);
-        while (strlen(agenda[usuarios].endereco.complemento) > 50){
+        while (strlen(agenda[usuarios].endereco.complemento) > 50 || strlen(agenda[usuarios].endereco.complemento) < 1){
             printf("Complemento invalido, digite novamente: ");
             gets(agenda[usuarios].endereco.complemento);
         }
 
         printf("Bairro: ");
         gets(agenda[usuarios].endereco.bairro);
-        while (strlen(agenda[usuarios].endereco.bairro) > 100){
+        while (strlen(agenda[usuarios].endereco.bairro) > 100 || strlen(agenda[usuarios].endereco.bairro) < 1){
             printf("Bairro invalido, digite novamente: ");
             gets(agenda[usuarios].endereco.bairro);
         }
@@ -137,21 +161,21 @@ void dados()
 
         printf("Cidade: ");
         gets(agenda[usuarios].endereco.cidade);
-        while (strlen(agenda[usuarios].endereco.cidade) > 100){
+        while (strlen(agenda[usuarios].endereco.cidade) > 100 || strlen(agenda[usuarios].endereco.cidade) < 1){
             printf("Cidade invalida, digite novamente: ");
             gets(agenda[usuarios].endereco.cidade);
         }
 
         printf("Estado: ");
         gets(agenda[usuarios].endereco.estado);
-        while (strlen(agenda[usuarios].endereco.estado) > 50){
+        while (strlen(agenda[usuarios].endereco.estado) > 50 || strlen(agenda[usuarios].endereco.estado) < 1){
               printf("Estado invalido, digite novamente: ");
               gets(agenda[usuarios].endereco.estado);
         }
 
         printf("Pais: ");
         gets(agenda[usuarios].endereco.pais);
-        while (strlen(agenda[usuarios].endereco.pais) > 50){
+        while (strlen(agenda[usuarios].endereco.pais) > 50 || strlen(agenda[usuarios].endereco.pais) < 1){
               printf("Estado invalido, digite novamente: ");
               gets(agenda[usuarios].endereco.pais);
         }
@@ -371,16 +395,22 @@ void remover(void)
                 agenda[i+1] = temp[i];
             }
             usuarios --;
+
         }
     }
     printf("\n\n\n");
-    //alfabetica();
 }
 
 void printAll(void)
 {
     char lixo;
     scanf("%c",&lixo);
+
+    if (usuarios == 0)
+    {
+        printf("Nenhum usuario esta cadastrado");
+    }
+    
 
     for (int i = 0; i < usuarios; i++)
     {
@@ -408,6 +438,11 @@ void printNomeEmailTelefone(void)
 {
     char lixo;
     scanf("%c",&lixo);
+
+    if (usuarios == 0)
+    {
+        printf("Nenhum usuario esta cadastrado");
+    }
 
     for (int i = 0; i < usuarios; i++)
     {
@@ -485,9 +520,11 @@ int main(void)
     switch(menu_opt){
     case 'a':
         dados();
+        //alfabetica();
         break;
     case 'b':
         remover();
+        //alfabetica();
         break;
     case'c':
         nome();
