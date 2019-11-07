@@ -182,7 +182,7 @@ void dados()
 
         printf("DDD:(4 digitos max) ");
         gets(agenda[usuarios].telefone.ddd);
-        while (strlen(agenda[usuarios].telefone.ddd) > 4)
+        while (strlen(agenda[usuarios].telefone.ddd) > 4 || (strlen(agenda[usuarios].telefone.ddd) < 1))
         {
            printf("Digite um DDD valido: ");
            gets(agenda[usuarios].telefone.ddd);
@@ -190,7 +190,7 @@ void dados()
 
         printf("Numero de telefone:(11 digitos max) ");
         gets(agenda[usuarios].telefone.numero);
-        while (strlen(agenda[usuarios].telefone.numero) > 11)
+        while (strlen(agenda[usuarios].telefone.numero) > 11 || (strlen(agenda[usuarios].telefone.numero) < 1))
         {
            printf("Digite um telefone valido: ");
            gets(agenda[usuarios].telefone.numero);
