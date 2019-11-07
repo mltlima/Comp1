@@ -36,7 +36,7 @@ void dados()
    for (int i = 0; i < 2; i++){
       printf("Digite o nome do usuario %d: ",i + 1);
       gets(cadastro[i].nome);
-      while (strlen(cadastro[i].nome) > 200){
+      while (strlen(cadastro[i].nome) > 200 || strlen(cadastro[i].nome) < 1){
           printf("Nome invalido, digite novamente: ");
           gets(cadastro[i].nome);
       }
@@ -78,7 +78,7 @@ void dados()
       }
 
       
-      printf("Identidade: ");
+      printf("Identidade(9 digitos): ");
       gets(cadastro[i].identidade);
       while (strlen(cadastro[i].identidade) != 9){
           cadastro[i].identidade[0] = '\0';
@@ -86,7 +86,7 @@ void dados()
           gets(cadastro[i].identidade);
       }
 
-      printf("CPF: ");
+      printf("CPF(11 digitos): ");
       gets(cadastro[i].CPF);
       while (strlen(cadastro[i].CPF) != 11){
           cadastro[i].CPF[0] = '\0';
@@ -94,17 +94,17 @@ void dados()
           gets(cadastro[i].CPF);
       }
 
-      printf("Telefone: ");
+      printf("Telefone(11 digitos max): ");
       gets(cadastro[i].telefone);
-      while (strlen(cadastro[i].telefone) != 11)
+      while (strlen(cadastro[i].telefone) > 11 || (strlen(cadastro[i].telefone) < 1))
       {
-         printf("Digite um numero de telefone valido: ");
+         printf("Digite um telefone valido: ");
          gets(cadastro[i].telefone);
       }
       
       
       
-      printf("CEP: ");
+      printf("CEP(8 digitos): ");
       gets(cadastro[i].adress.cep);
       while (strlen(cadastro[i].adress.cep) != 8){
           printf("CEP invalido, digite novamente: ");
@@ -113,7 +113,7 @@ void dados()
 
       printf("Rua: ");                                            
       gets(cadastro[i].adress.rua);
-      while (strlen(cadastro[i].adress.rua) > 100){
+      while (strlen(cadastro[i].adress.rua) > 100 || strlen(cadastro[i].adress.rua) < 1){
           printf("Rua invalida, digite novamente: ");
           gets(cadastro[i].adress.rua);
       }
@@ -121,7 +121,7 @@ void dados()
       
       printf("Bairro: ");
       gets(cadastro[i].adress.bairro);
-      while (strlen(cadastro[i].adress.bairro) > 100){
+      while (strlen(cadastro[i].adress.bairro) > 100 || strlen(cadastro[i].adress.bairro) < 1){
           printf("Bairro invalido, digite novamente: ");
           gets(cadastro[i].adress.bairro);
       }
@@ -129,14 +129,14 @@ void dados()
       
       printf("Cidade: ");
       gets(cadastro[i].adress.cidade);
-      while (strlen(cadastro[i].adress.cidade) > 100){
+      while (strlen(cadastro[i].adress.cidade) > 100 || strlen(cadastro[i].adress.cidade) < 1){
           printf("Cidade invalida, digite novamente: ");
           gets(cadastro[i].adress.cidade);
       }
       
       printf("Estado: ");
       gets(cadastro[i].adress.estado);
-      while (strlen(cadastro[i].adress.estado) > 50){
+      while (strlen(cadastro[i].adress.estado) > 50 || strlen(cadastro[i].adress.estado) < 1){
             printf("Estado invalido, digite novamente: ");
             gets(cadastro[i].adress.estado);
         }
