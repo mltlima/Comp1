@@ -152,7 +152,7 @@ void dados()
             gets(agenda[usuarios].endereco.bairro);
         }
 
-        printf("CEP: ");
+        printf("CEP(8 digitos): ");
         gets(agenda[usuarios].endereco.CEP);
         while (strlen(agenda[usuarios].endereco.CEP) != 8){
             printf("CEP invalido, digite novamente: ");
@@ -180,7 +180,7 @@ void dados()
               gets(agenda[usuarios].endereco.pais);
         }
 
-        printf("DDD: ");
+        printf("DDD:(4 digitos max) ");
         gets(agenda[usuarios].telefone.ddd);
         while (strlen(agenda[usuarios].telefone.ddd) > 4)
         {
@@ -188,7 +188,7 @@ void dados()
            gets(agenda[usuarios].telefone.ddd);
         }
 
-        printf("Numero de telefone: ");
+        printf("Numero de telefone:(11 digitos max) ");
         gets(agenda[usuarios].telefone.numero);
         while (strlen(agenda[usuarios].telefone.numero) > 11)
         {
