@@ -68,7 +68,7 @@ void dados()
         }
     
 
-        printf("Digite o sobrenome do usuario:\n");
+        printf("Digite o sobrenome do usuario: ");
         gets(agenda[usuarios].nome.sobrenome);
 
         while (strlen(agenda[usuarios].nome.sobrenome) > 150 || strlen(agenda[usuarios].nome.sobrenome) < 1){
@@ -119,7 +119,7 @@ void dados()
         }
 
 
-        printf("Digite o email do usuario:\n");
+        printf("Digite o email do usuario: ");
         scanf("%200s",agenda[usuarios].email);
         fflush(stdin);
 
@@ -195,7 +195,7 @@ void dados()
            printf("Digite um telefone valido: ");
            gets(agenda[usuarios].telefone.numero);
         }
-        printf("Alguma observacao?\n");
+        printf("Alguma observacao? ");
         gets(agenda[usuarios].observacao);
 
         usuarios ++;
@@ -217,7 +217,7 @@ void nome(void)
 
     printf("Digite o primeiro nome do usuario que deseja fazer a busca\n");
     gets(first);
-    while(strlen(first) > 50){
+    while(strlen(first) > 50 || strlen(first) < 1){
         first[0] = '\0';
         printf("Digite um nome valido: ");
         gets(first);
@@ -340,24 +340,35 @@ void diaMes(void)
 // Organiza em ordem alfabetica
 void alfabetica(void)
 {
-    char lixo;
-    scanf("%c",&lixo);
-    for(int i = 0; i < usuarios-1; ++i){
-        if( strcmp(agenda[i].nome.primeiroNome, agenda[i+1].nome.primeiroNome ) > 0 )
+    struct  Agenda aux;
+    
+    
+    
+    
+    //char lixo;
+    //scanf(" "/*, &lixo*/);
+    for(int i = 0; i < usuarios-1; i++)
+    {
+        for(int j = i+1; j < usuarios; j++)
         {
-            temp[i] = agenda[i];
-            agenda[i]= agenda[i+1];
-            agenda[i+1] = temp[i];
-        }
-
-        // Caso o primeiro nome seja igual
-        if (strcmp(agenda[i].nome.primeiroNome, agenda[i+1].nome.primeiroNome ) == 0)
-            if (strcmp(agenda[i].nome.sobrenome, agenda[i+1].nome.sobrenome ) > 0)
+            if( strcmp(agenda[i].nome.primeiroNome, agenda[j].nome.primeiroNome) > 0 )
             {
-                temp[i] = agenda[i];
-                agenda[i]= agenda[i+1];
-                agenda[i+1] = temp[i];
+                aux = agenda[i];
+                agenda[i]= agenda[j];
+                agenda[j] = aux;
             }
+        
+
+            // Caso o primeiro nome seja igual
+            if (strcmp(agenda[i].nome.primeiroNome, agenda[j].nome.primeiroNome ) == 0){
+                if(strcmp(agenda[i].nome.sobrenome, agenda[j].nome.sobrenome ) > 0)
+                {
+                    aux = agenda[i];
+                    agenda[i]= agenda[j];
+                    agenda[j] = aux;
+                }
+            }
+        }
     }
     printf("\n\n\n");
 }
@@ -371,14 +382,14 @@ void remover(void)
     scanf("%c",&lixo);
     printf("Digite o nome do usuario que deseja remover: ");
         gets(nome);
-        while (strlen(nome) > 50){
+        while (strlen(nome) > 50 || strlen(nome) < 1){
             printf("Nome invalido, digite novamente: ");
             gets(nome);
         }
 
     printf("Digite o sobrenome do usuario que deseja remover: \n");
         gets(sobrenome);
-        while (strlen(sobrenome) > 150){
+        while (strlen(sobrenome) > 150 || strlen(sobrenome) < 1){
             printf("Nome invalido, digite novamente: ");
             gets(sobrenome);
         }
@@ -404,7 +415,7 @@ void remover(void)
 void printAll(void)
 {
     char lixo;
-    scanf("%c",&lixo);
+    //scanf("%c",&lixo);
 
     if (usuarios == 0)
     {
@@ -512,7 +523,7 @@ int main(void)
     printf("h. Imprimir nome, telefone e email.\n");
     printf("Digite 's' para parar de executar o programa\n");
     printf(" Digite uma das opcoes do menu: ");
-    scanf("%c",&menu_opt);
+    scanf(" %c",&menu_opt);
     
 
 
