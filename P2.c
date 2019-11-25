@@ -61,7 +61,30 @@ int main (void)
     
 
     return 0;
+/*    
+int main (void) 
+{
+    struct test
+    {
+        char *nome;
+        char *sobrenome;   
+    };
+
+    struct test *testando = malloc(sizeof(struct test));
+
+    testando->nome = "Miguel";
+    testando->sobrenome = "Lima Tavares";
+
+    printf("%s\t",testando->nome);
+    printf("%s\n",testando->sobrenome);
     
+    free(testando);
+    
+    return 0;
+    
+*/
+    
+}
 
     
 }
